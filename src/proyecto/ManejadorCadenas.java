@@ -16,7 +16,7 @@ public class ManejadorCadenas {
                 mes = JOptionPane.showInputDialog(null, mensaje);
                 error = false;
             } catch (HeadlessException e) {
-                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+                VisualizadorMensajes.mostrarMensaje("Error: " + e.getMessage());
                 error = true;
             }
         } while (error);
@@ -34,7 +34,7 @@ public class ManejadorCadenas {
                 cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, mensaje));
                 error = false;
             } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null, "Error, ingrese un número: " + nfe.getMessage());
+                VisualizadorMensajes.mostrarMensaje("Error, ingrese un número.");
                 error = true;
             }
         } while (error);

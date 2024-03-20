@@ -4,11 +4,6 @@ import java.util.regex.Pattern;
 
 public class Validador {
 
-    public static boolean tieneEspacios(String cadena)
-    {
-        return cadena.contains(" ");
-    }
-
     public static boolean esCedulaValida(String cedula)
     {
         boolean cedulaCorrecta = false;
@@ -42,12 +37,12 @@ public class Validador {
         } catch (NumberFormatException nfe) {
             cedulaCorrecta = false;
         } catch (Exception err) {
-            System.out.println("Una excepcion ocurrio en el proceso de validadcion");
+            VisualizadorMensajes.mostrarMensaje("Una excepcion ocurrio en el proceso de validacion.");
             cedulaCorrecta = false;
         }
 
         if (!cedulaCorrecta) {
-            System.out.println("La cédula ingresada es Incorrecta");
+            VisualizadorMensajes.mostrarMensaje("La cedula ingresada es incorrecta.");
         }
         return cedulaCorrecta;
     }
@@ -212,6 +207,20 @@ public class Validador {
         } while (salario < 0);
 
         return salario;
+    }
+
+    public static int obtenerNumeroValidoDadoUnMensaje(String mensaje)
+    {
+        int numero;
+        do {
+            numero = ManejadorCadenas.obtenerEnteroDesdeMensaje(mensaje);
+            if (numero < 0) {
+                VisualizadorMensajes.mostrarMensaje("El numero debe ser mayor a cero.");
+            }
+
+        } while (numero < 0);
+
+        return numero;
     }
 
 }

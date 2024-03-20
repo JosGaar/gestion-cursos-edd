@@ -15,8 +15,8 @@ public class Cliente {
     {
 
         int opcion, iteracionEstudiante = 0;
-        int cantidadEstudiantes = ManejadorCadenas.obtenerEnteroDesdeMensaje("Ingrese la cantidad de estudiantes");
-        int cantidadCursos = ManejadorCadenas.obtenerEnteroDesdeMensaje("Ingrese la cantidad de cursos");
+        int cantidadEstudiantes = Validador.obtenerNumeroValidoDadoUnMensaje("Ingrese la cantidad de estudiantes");
+        int cantidadCursos = Validador.obtenerNumeroValidoDadoUnMensaje("Ingrese la cantidad de cursos");
 
         GestorCentroEducativo gestorCentro = new GestorCentroEducativo(cantidadEstudiantes, cantidadCursos);
         do {
@@ -110,8 +110,6 @@ public class Cliente {
                 nombre2, apellido1, apellido2, parsearStringALocalDate(fechaNacimiento));
     }
 
-
-
     public static LocalDate parsearStringALocalDate(String fecha)
     {
 
@@ -141,7 +139,5 @@ public class Cliente {
         } while (error);
         return opcion;
     }
-
- 
 
 }
