@@ -3,7 +3,7 @@ package proyecto;
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 
-public class ManejadorCadenas {
+public final class ManejadorCadenas {
 
     public static String obtenerStringDesdeMensaje(String mensaje)
     {

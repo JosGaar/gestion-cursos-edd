@@ -2,7 +2,7 @@ package proyecto;
 
 import javax.swing.JOptionPane;
 
-public class VisualizadorMensajes {
+public final class VisualizadorMensajes {
 
     public static void mostrarMensaje(String mensaje)
     {

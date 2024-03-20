@@ -1,7 +1,5 @@
 package proyecto;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 public class Cliente {
@@ -24,7 +22,7 @@ public class Cliente {
             switch (opcion) {
                 case 1:
                     if (iteracionEstudiante < cantidadEstudiantes) {
-                        Estudiante estudiante = generarEstudiante(cantidadCursos);
+                        Estudiante estudiante = GeneradorInstancias.generarEstudiante(cantidadCursos);
                         if (estudiante != null) {
                             if (gestorCentro.agregarPersona(estudiante)) {
                                 VisualizadorMensajes.mostrarMensaje("Estudiante registrado correctamente.");
@@ -40,7 +38,7 @@ public class Cliente {
                     }
                     break;
                 case 2:
-                    Profesor profesor = generarProfesor();
+                    Profesor profesor = GeneradorInstancias.generarProfesor();
                     if (profesor != null) {
                         if (gestorCentro.agregarPersona(profesor)) {
                             VisualizadorMensajes.mostrarMensaje("Profesor registrado correctamente.");
@@ -63,58 +61,6 @@ public class Cliente {
             }
         } while (opcion != 5);
 
-    }
-
-    // Generacion de estudiante
-    public static Estudiante generarEstudiante(int cursosCentro)
-    {
-
-        String cedula, direccion, nombre1, nombre2, apellido1, apellido2, fechaNacimiento;
-        int cantidadCursos;
-        boolean continuar = false;
-
-        JOptionPane.showMessageDialog(null, "Ingrese los datos acontinuacion");
-
-        cedula = Validador.obtenerCedulaValida();
-        direccion = Validador.obtenerDireccionValida();
-        nombre1 = Validador.obtenerPrimerNombreValido();
-        nombre2 = Validador.obtenerSegundoNombreValido();
-        apellido1 = Validador.obtenerPrimerApellidoValido();
-        apellido2 = Validador.obtenerSegundoApellidoValido();
-        fechaNacimiento = Validador.obtenerFechaValida();
-        cantidadCursos = Validador.validarCantidadCursos(cursosCentro);
-
-        return new Estudiante(direccion, cedula, nombre1, nombre2,
-                apellido1, apellido2, parsearStringALocalDate(fechaNacimiento),
-                cantidadCursos);
-    }
-
-    // Generacion de docente
-    public static Profesor generarProfesor()
-    {
-
-        String cedula, nombre1, nombre2, apellido1, apellido2, fechaNacimiento;
-        int aniosExperiencia, salario;
-
-        JOptionPane.showMessageDialog(null, "Ingrese los datos acontinuacion");
-        aniosExperiencia = Validador.obtenerAniosDeExperienciaValido();
-        salario = Validador.obtenerSalarioValido();
-        cedula = Validador.obtenerCedulaValida();
-        nombre1 = Validador.obtenerPrimerNombreValido();
-        nombre2 = Validador.obtenerSegundoNombreValido();
-        apellido1 = Validador.obtenerPrimerApellidoValido();
-        apellido2 = Validador.obtenerSegundoApellidoValido();
-        fechaNacimiento = Validador.obtenerFechaValida();
-
-        return new Profesor(aniosExperiencia, salario, cedula, nombre1,
-                nombre2, apellido1, apellido2, parsearStringALocalDate(fechaNacimiento));
-    }
-
-    public static LocalDate parsearStringALocalDate(String fecha)
-    {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return LocalDate.parse(fecha, formatter);
     }
 
     public static int seleccionarOpcion()

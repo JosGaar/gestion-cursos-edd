@@ -1,5 +1,7 @@
 package proyecto;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 public class Validador {
@@ -41,9 +43,6 @@ public class Validador {
             cedulaCorrecta = false;
         }
 
-        if (!cedulaCorrecta) {
-            VisualizadorMensajes.mostrarMensaje("La cedula ingresada es incorrecta.");
-        }
         return cedulaCorrecta;
     }
 
@@ -221,6 +220,13 @@ public class Validador {
         } while (numero < 0);
 
         return numero;
+    }
+
+    public static LocalDate parsearStringALocalDate(String fecha)
+    {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(fecha, formatter);
     }
 
 }
