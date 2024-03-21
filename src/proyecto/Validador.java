@@ -57,7 +57,6 @@ public class Validador {
         return cadena.trim().isEmpty();
     }
 
-    // Validaciones
     public static String obtenerCedulaValida()
     {
         String cedula;
@@ -84,6 +83,20 @@ public class Validador {
         } while (Validador.esStringVacio(direccion));
 
         return direccion.trim();
+    }
+
+    public static String obtenerNombreCurso()
+    {
+        String nombre;
+        do {
+            nombre = ManejadorCadenas.obtenerStringDesdeMensaje("Ingrese un nombre para el curso");
+            if (Validador.esStringVacio(nombre)) {
+                VisualizadorMensajes.mostrarMensaje("Ingrese un nombre valido.");
+            }
+
+        } while (Validador.esStringVacio(nombre));
+
+        return nombre.trim();
     }
 
     public static String obtenerPrimerNombreValido()
@@ -142,7 +155,7 @@ public class Validador {
         return apellido.trim();
     }
 
-    public static int validarCantidadCursos(int cursosCentro)
+    public static int validarCantidadCursos(int cursosLimite)
     {
         int cantidadCursos;
         boolean error = false;
@@ -151,7 +164,7 @@ public class Validador {
             cantidadCursos = ManejadorCadenas.obtenerEnteroDesdeMensaje("Ingrese la cantidad de cursos");
 
             if (cantidadCursos >= 0) {
-                error = cantidadCursos > cursosCentro;
+                error = cantidadCursos > cursosLimite;
             }
 
             if (error) {
@@ -167,7 +180,7 @@ public class Validador {
     {
         String fechaNacimiento;
         do {
-            fechaNacimiento = ManejadorCadenas.obtenerStringDesdeMensaje("Ingrese su fecha de nacimiento (yyyy-mm-dd)");
+            fechaNacimiento = ManejadorCadenas.obtenerStringDesdeMensaje("Ingrese la fecha de nacimiento (yyyy-mm-dd)");
 
             if (!Validador.esFechaValida(fechaNacimiento)) {
                 VisualizadorMensajes.mostrarMensaje("Ingrese una fecha de nacimiento valida.");

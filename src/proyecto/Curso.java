@@ -19,11 +19,10 @@ public class Curso {
         return this.profesor;
     }
 
-    public Curso(String nombre, int cantidadHoras, Profesor profesor)
+    public Curso(String nombre, int cantidadHoras)
     {
         this.nombre = nombre;
         this.cantidadHoras = cantidadHoras;
-        this.profesor = profesor;
         this.id = ++incremento;
     }
 

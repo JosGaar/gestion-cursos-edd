@@ -38,10 +38,25 @@ public class GestorCentroEducativo {
                 }
             }
         }
-        
+
         return false;
     }
 
+    public boolean agregarCurso(Curso curso)
+    {
+        if (curso != null) {
+            for (int i = 0; i < this.cursos.length; i++) {
+                if (cursos[i] == null) {
+                    cursos[i] = curso;
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /*
     public boolean eliminarCurso(int identificadorCurso)
     {
         if (identificadorCurso > 0) {
@@ -64,6 +79,5 @@ public class GestorCentroEducativo {
         }
 
         return false;
-    }
-
+    }*/
 }
