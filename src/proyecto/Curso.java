@@ -6,30 +6,27 @@ public class Curso {
     public static int incremento = 0;
     public String nombre;
     public int cantidadHoras;
+    public int cantidadEstudiantes;
     public Estudiante[] estudiantes;
     public Profesor profesor;
 
-    public int getId()
-    {
-        return this.id;
-    }
-
-    public Profesor getProfesor()
-    {
-        return this.profesor;
-    }
-
-    public Curso(String nombre, int cantidadHoras)
+    public Curso(String nombre, int cantidadHoras, int cantidadEstudiantes)
     {
         this.nombre = nombre;
         this.cantidadHoras = cantidadHoras;
         this.id = ++incremento;
+        this.estudiantes = new Estudiante[cantidadEstudiantes];
     }
 
     @Override
     public String toString()
     {
         return "Curso{" + "nombre=" + nombre + ", cantidadHoras=" + cantidadHoras + ", profesor=" + profesor.apellido1 + '}';
+    }
+
+    public Profesor getProfesor()
+    {
+        return this.profesor;
     }
 
     public boolean matricularEstudiante(Estudiante estudiante)
@@ -40,6 +37,17 @@ public class Curso {
                 estudiante.matricularEnCurso(this);
                 return true;
             }
+        }
+
+        return false;
+    }
+
+    public boolean matricularDocente(Profesor docente)
+    {
+        if (docente != null) {
+            this.profesor = docente;
+            docente.matricularEnCurso(this);
+            return true;
         }
 
         return false;
@@ -59,7 +67,5 @@ public class Curso {
 
         return false;
     }
-    
-   
 
 }

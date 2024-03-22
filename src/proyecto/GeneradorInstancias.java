@@ -28,7 +28,7 @@ public final class GeneradorInstancias {
     {
 
         String cedula, nombre1, nombre2, apellido1, apellido2, fechaNacimiento;
-        int aniosExperiencia, salario;
+        int aniosExperiencia, salario, cantidadCursos;
 
         VisualizadorMensajes.mostrarMensaje("Ingrese los datos a continuacion");
         cedula = Validador.obtenerCedulaValida();
@@ -39,21 +39,23 @@ public final class GeneradorInstancias {
         apellido1 = Validador.obtenerPrimerApellidoValido();
         apellido2 = Validador.obtenerSegundoApellidoValido();
         fechaNacimiento = Validador.obtenerFechaValida();
+        cantidadCursos = Validador.obtenerNumeroValidoDadoUnMensaje("Ingrese la cantidad de cursos del profesor");
 
         return new Profesor(aniosExperiencia, salario, cedula, nombre1,
-                nombre2, apellido1, apellido2, Validador.parsearStringALocalDate(fechaNacimiento));
+                nombre2, apellido1, apellido2, Validador.parsearStringALocalDate(fechaNacimiento), cantidadCursos);
     }
 
     public static Curso generarCurso()
     {
 
         String nombre;
-        int cantidadHoras;
+        int cantidadHoras, cantidadEstudiantes;
 
         nombre = Validador.obtenerNombreCurso();
         cantidadHoras = Validador.obtenerNumeroValidoDadoUnMensaje("Ingrese la cantidad de horas del curso");
+        cantidadEstudiantes = Validador.obtenerNumeroValidoDadoUnMensaje("Ingrese la cantidad de estudiantes del curso");
 
-        return new Curso(nombre, cantidadHoras);
+        return new Curso(nombre, cantidadHoras, cantidadEstudiantes);
     }
 
 }
